@@ -1,0 +1,40 @@
+/* 
+--Thanks to http://css3buttongenerator.com/ for the usefull tool
+-- wich was used for the CSS for some buttons
+*/
+
+.btnBlue {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btnBlue:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.btnGrey {
+  background: #cccccc;
+  background-image: -webkit-linear-gradient(top, #cccccc, #a9aaab);
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+    margin: 2%;
+}
+
+.btnGrey:hover {
+  background: #d7dbde;
+  background-image: -webkit-linear-gradient(top, #d7dbde, #7a7a7a);
+}

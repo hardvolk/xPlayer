@@ -1,0 +1,23 @@
+{
+  "name": "xPlayer",
+  "main": "xPlayer.html",
+  "description": "Best Player for JukeBox Devices",
+  "version": "0.1.0",
+  "chromium-args": "--load-plugin=plugins\\npWebChimera.dll",
+  "window": {
+    "title": "xPalyer 0.1",
+    "kiosk": true,
+    "fullscreen": true,
+    "min_width": 800,
+    "min_height": 600,
+    "frame": false,
+    "toolbar": true
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "dependencies": {
+    "nedb": "^1.1.2",
+    "sqlite3": "^3.0.9"
+  }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es" >
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Plugins -->
+
+    <script src="../app/plugins/jquery-2.1.3.min.js"></script>
+    <script src="../app/plugins/sweetalert-dev.js"></script>
+    <script src="../app/js/fsFunctions.js"></script>
+    <script src="../app/js/DBLayer.js"></script>
+
+
+
+
+    <link type="text/css" rel="stylesheet" href="../app/css/BasicStyle.css"> <!-- Basic style for the app -->
+    <link type="text/css" rel="stylesheet" href="../app/css/sweetalert.css"> <!-- SweetAlert  -->
+    <link type="text/css" rel="stylesheet" href="../app/font/icon.css"> <!-- Icons from Materialize -->
+    <link type="text/css" rel="stylesheet" href="../app/css/materialize.css"> <!-- Materialize CSS -->
+    <link type="text/css" rel="stylesheet" href="../app/font/font-awesome/css/font-awesome.css"> <!-- More Font icons -->
+
+  </head>
+
+    <body>
+        <div id="MainContainer" class="">
+
+            <!---------------       MENU        ------------------------>
+            <div id="MenuContainer" class="">
+                <a href="#!" id="xPlayer" class="menuOption hoverable">xPlayer</a>
+                <a href="#!" id="Biblioteca" class="menuOption hoverable">Biblioteca</a>
+                <a href="#!" id="PlayListOption" class="menuOption hoverable">PlayList</a>
+                <a href="#!" id="YouTube" class="menuOption hoverable">YouTube</a>
+                <!-- <a href="#!" id="Explora" class="menuOption hoverable">Explora</a> -->
+                <a href="#ConfigMenu" id="Configurar" class="menuOption hoverable">Configurar</a>
+                <a href="#!" id="Salir" class="menuOption hoverable">Salir</a>
+
+            </div>
+
+            <!---------------     NAVIGATOR     ----------------------->
+      <div id="NavigatorContainer" class="">
+          <div id="SearchContainer">
+              <span> </span>
+              <input id="Search" type="text" placeholder="Buscar...">
+          </div>
+
+          <div id="Items">
+<!--
+              <div class="nav-item">
+                  <h3>Foster the people</h3>
+              </div>
+-->
+        </div>
+          <div id="FilesContainer">
+              <a id="FilesContainer_back" class="btn-flat z-depth-2"><i class="fa fa-mail-reply"></i>&nbsp;Regresar</a>
+               <div class="collection">
+              </div>
+          </div>
+
+        </div>
+      <!-------------------------       PLAYER      -------------------->
+        <div id="PlayerContainer" class="">
+            <div id="PlayerScreen" width="100%" height="28%">
+
+    <!--
+    Video de Internet
+    <param name="mrl" value="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.avi" />
+    Karaoke mp3+cdg
+    <param name="mrl" value="file:///C:/Users/Eliud/Music/Karaokes/A Ha - Take On Me.mp3" >
+    MP3
+    <param name="mrl" value="file:///C:/Users/Eliud/Music/Dimitri Vegas/Dimitri Vegas - bodytalk.mp3" >
+    YouTube
+
+    <param name="mrl" value="https://www.youtube.com/watch?v=7BBKNTU1IFQ" >
+-->
+
+            </div>
+            <!--  PLAYER BUTTONS      -->
+            <div id="PlayerBtns">
+                <button id="Prev" class="hoverable"><i class="fa fa-backward"></i></button>
+                <button id="Play" class="hoverable"><i class="fa fa-play"></i></button>
+                <button id="Next" class="hoverable"><i class="fa fa-forward"></i></button>
+                <button id="FullScreen" class="hoverable"><i class="fa fa-expand"></i></button>
+                <button id="SavePL" class="hoverable"><i class="fa fa-save"></i></button>
+                <button id="Delete" class="hoverable"><i class="fa fa-trash"></i></button>
+            </div>
+
+            <!-- PLAYLIST   ------->
+            <div id="PLcontainer" >
+            <!--    <li><a href="#" path="">Cancion 1 - Unknown Artist</a><span class="del">X</span></li>-->
+                <p>Agrega una canción y que empieze la fiesta :)</p>
+                <div class="collection">
+
+                </div>
+            </div>
+
+        </div>
+
+
+      </div> <!-- END OF THE MAIN_CONTAINER -->
+    <!--------------------------        DIALOGS     ------------------->
+        <!-- Modal Structure For Config Menu-->
+  <div id="ConfigMenu" class="modal">
+    <div class="modal-content">
+        <h3>Configuracion</h3>
+      <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">video_library</i>Biblioteca</div>
+      <div class="collapsible-body">
+          <div class="collection">
+              <a id="AddFolderOption" href="#!" class="collection-item">&nbsp;&nbsp;&nbsp;Agregar un Folder a la Libreria</a>
+              <a id="AddRootFolderOption" href="#!" class="collection-item">&nbsp;&nbsp;&nbsp;Agregar SubFolders a la Libreria</a>
+          </div>
+        </div>
+    </li>
+
+  </ul>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn">Cerrar</a>
+    </div>
+  </div>
+<!-----   MODAL FOR A NEW FOLDER ----->
+ <div id="FolderInfo" class="modal">
+     <div class="modal-content">
+
+         <label for="NewFolderName">Nombre:</label>
+         <input id="NewFolderName" type="text" placeholder="Nombre">
+
+         <input name="NewFolderCategory" type="radio" id="CategoryTracks" value="Tracks" checked>
+            <label for="CategoryTracks">Musica</label>
+         <br>
+         <input name="NewFolderCategory" type="radio" id="CategoryKaraoke" value="Karaoke">
+            <label for="CategoryKaraoke">Karaoke</label>
+         <br>
+         <input name="NewFolderCategory" type="radio" id="CategoryVideos" value="Videos">
+            <label for="CategoryVideos">Videos</label>
+         <br>
+         <div class="modal-footer">
+            <a id="ConfirmBtn" href="#!" class="btn waves-effect waves-light"><i class="material-icons">done</i>Aceptar</a>
+         </div>
+     </div>
+ </div>
+
+<!-----   MODAL FOR A NEW ROOTFOLDER ----->
+ <div id="RootFolderInfo" class="modal">
+     <div class="modal-content">
+
+         <h3>Selecciona la Categoria</h3>
+
+         <input name="NewRootFolderCategory" id="inputRFTracks" type="radio" value="Tracks" checked>
+            <label for="inputRFTracks">Musica</label>
+         <br>
+         <input name="NewRootFolderCategory" id="inputRFKaraoke" type="radio" value="Karaoke">
+            <label for="inputRFKaraoke">Karaoke</label>
+         <br>
+         <input name="NewRootFolderCategory" id="inputRFVideos" type="radio" value="Videos">
+            <label for="inputRFVideos">Videos</label>
+         <br>
+         <div class="modal-footer">
+            <a href="#!" class="btn waves-effect waves-light"><i class="material-icons">done</i>Aceptar</a>
+         </div>
+     </div>
+ </div>
+<!---------     HIDDEN THINGS   ----------->
+<div style="display: none">
+
+</div>
+
+<!-----------------------------     INPUT FILES ---------------->
+        <input type='file' id='inputFolder' nwdirectory style="display: none" />
+        <input type='file' id='inputRootFolder' nwdirectory style="display: none" />
+
+
+
+  </body>
+<script src="../app/js/FolderFn.js"></script>
+<script src="../app/js/ConfigFn.js"></script>
+<script src="../app/plugins/materialize.js"></script>
+<script src="../app/plugins/player/webchimera.js"></script>
+<script src="../app/js/PlayBack.js"></script>
+<script src="../app/js/initializeStuff.js"></script>
+      <script type="text/javascript">
+      getAllDocs(function(err, docs){loadNavItems(err, docs, '#Items')});
+  </script>
+</html>
